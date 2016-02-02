@@ -1,0 +1,58 @@
+
+#div-content{
+    /*background-color: #FFE4E1;*/
+}
+
+.ui.form{
+    width: 35%;
+}
+
+#div-tit-tabla{
+    margin-top: 1%;
+    margin-left: 45%;
+    margin-right: 40%;
+}
+
+#div-tit-biblioteca{
+    margin-left: 45%;
+    margin-right: 40%;
+}
+
+#div-head-foot{
+    /*background-color: #FFE4E1;*/
+}
+
+#bo{
+    /*background-color: #D8BFD8;*/
+    font-family: sans-serif;
+}
+
+#div-tabla{
+    /*background-color: #D8BFD8;*/
+}
+
+#form-busqueda-div{
+    /*background-color: #D8BFD8;*/
+}
+
+#div-menu{
+    /*background-color: #FFE4E1;*/
+}
+
+#th{
+    background-color: #ff9999;
+    text-align: center;
+}
+
+#td1{
+    background-color: #c4b3e7;
+}
+
+#forms{
+    margin-left: 30%;
+    margin-right: 35%;
+}
+
+#tit-form{
+    margin-left: 31%;
+}
