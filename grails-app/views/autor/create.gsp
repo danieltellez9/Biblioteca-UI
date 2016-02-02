@@ -30,7 +30,8 @@
                         <g:render template="form"/>
                     <!--</fieldset>-->
                     <!--<fieldset class="buttons">-->
-                        <g:submitButton name="create" class="ui button" value="${message(code: 'default.biblioteca.guardar', default: 'Create')}" />
+                        <br>
+                        <g:submitButton name="create" class="ui button green" value="${message(code: 'default.biblioteca.guardar', default: 'Create')}" />
                     <!--</fieldset>-->
                 </g:form>
             </div>

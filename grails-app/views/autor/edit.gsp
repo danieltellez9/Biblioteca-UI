@@ -29,7 +29,8 @@
                     <g:hiddenField name="version" value="${autorInstance?.version}" />
 
                     <g:render template="form"/>
-                    <g:actionSubmit class="ui button" action="update" value="${message(code: 'default.biblioteca.actualizar', default: 'Update')}" />
+                    <br>
+                    <g:actionSubmit class="ui button green" action="update" value="${message(code: 'default.biblioteca.actualizar', default: 'Update')}" />
                 </g:form>
             </div>
         </div>

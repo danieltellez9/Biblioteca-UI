@@ -20,7 +20,7 @@
                         <label>Busqueda de autores:</label>
                         <g:textField name="busqueda" placeholder="Buscar..."/>
                     </div>
-                    <g:submitButton name="buscar" class="ui button" value="${message(code: 'principal.busqueda', default: 'Buscar')}"/>
+                    <g:submitButton name="buscar" class="ui button blue" value="${message(code: 'principal.busqueda', default: 'Buscar')}"/>
                 </g:form>
             </div>
             <g:if test="${flash.message}">
