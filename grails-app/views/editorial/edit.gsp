@@ -7,16 +7,13 @@
         <title><g:message code="default.editorial.actualizar" /></title>
     </head>
     <body>
-        <a href="#edit-editorial" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.biblioteca.inicio"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.editorial.lista" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.editorial.nuevo" /></g:link></li>
-                </ul>
-            </div>
-            <div id="edit-editorial" class="content scaffold-edit" role="main">
-                <h1><g:message code="default.editorial.actualizar" /></h1>
+        <div class="ui menu">
+            <a href="${createLink(uri: '/')}" class="header item"><asset:image class="ui mini circular image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
+            <a href="${createLink(uri: '/editorial/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de Editoriales"/><g:message code="default.editorial.lista"/></a>
+            <a href="${createLink(uri: '/editorial/create')}" class="item"><asset:image class="ui mini image" src="add_icon.png" alt="Nueva Editorial"/><g:message code="default.editorial.nuevo"/></a>
+        </div>
+        <div id="div-content" class="ui segment container">
+            <label id="tit-form" class="ui medium header"><g:message code="default.categoria.actualizar"/></label>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -27,15 +24,14 @@
                         </g:eachError>
                 </ul>
             </g:hasErrors>
-            <g:form url="[resource:editorialInstance, action:'update']" method="PUT" >
-                <g:hiddenField name="version" value="${editorialInstance?.version}" />
-                <fieldset class="form">
+            <div class="ui segment container">
+                <g:form url="[resource:editorialInstance, action:'update']" method="PUT" class="ui form" id="forms">
+                    <g:hiddenField name="version" value="${editorialInstance?.version}" />
                     <g:render template="form"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:actionSubmit class="save" action="update" value="${message(code: 'default.biblioteca.actualizar', default: 'Update')}" />
-                </fieldset>
-            </g:form>
+                    <br>
+                    <g:actionSubmit class="ui button green" action="update" value="${message(code: 'default.biblioteca.actualizar', default: 'Update')}" />
+                </g:form>
+            </div>
         </div>
     </body>
 </html>

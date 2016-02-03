@@ -8,37 +8,39 @@
         <title><g:message code="default.editorial.mostrar" /></title>
     </head>
     <body>
-        <a href="#show-editorial" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.biblioteca.inicio"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.editorial.lista" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.editorial.nuevo" /></g:link></li>
-                </ul>
-            </div>
-            <div id="show-editorial" class="content scaffold-show" role="main">
-                <h1><g:message code="default.editorial.mostrar"/></h1>
+
+        <div class="ui menu">
+            <a href="${createLink(uri: '/')}" class="header item"><asset:image class="ui mini circular image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
+            <a href="${createLink(uri: '/editorial/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de Editoriales"/><g:message code="default.editorial.lista"/></a>
+            <a href="${createLink(uri: '/editorial/create')}" class="item"><asset:image class="ui mini image" src="add_icon.png" alt="Nueva Editorial"/><g:message code="default.editorial.nuevo"/></a>
+        </div>
+        <div id="div-content" class="ui segment container">
+            <label id="tit-form" class="ui medium header"><g:message code="default.editorial.mostrar"/></label>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <ol class="property-list editorial">
-
-                <g:if test="${editorialInstance?.editorial}">
-                    <li class="fieldcontain">
-                        <span id="editorial-label" class="property-label"><g:message code="editorial.editorial.label" default="Editorial" /></span>
-
-                        <span class="property-value" aria-labelledby="editorial-label"><g:fieldValue bean="${editorialInstance}" field="editorial"/></span>
-
-                    </li>
-                </g:if>
-
-            </ol>
-            <g:form url="[resource:editorialInstance, action:'delete']" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${editorialInstance}"><g:message code="default.biblioteca.actualizar" default="Edit" /></g:link>
-                    <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.biblioteca.eliminar', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
-            </g:form>
+            <fieldset>
+                <div class="ui form" id="forms">
+                    <g:if test="${editorialInstance?.editorial}">
+                        <div class="field">
+                            <label><g:message code="editorial.editorial.label" default="Editorial"/></label>
+                            <g:textField name="editorial" readonly="" id="editorial-label" value="${fieldValue(bean: editorialInstance, field: 'editorial')}"/>
+                        </div>
+                    </g:if>
+                    <div class="two fields">
+                        <div class="field">
+                            <g:form id="${fieldValue(bean: editorialInstance, field: 'id')}" action="edit">
+                                <g:submitButton name="editarBtn" class="ui button green" value="${message(code: 'default.biblioteca.actualizar', default: 'Edit')}"/>
+                            </g:form>
+                        </div>
+                        <div class="field">
+                            <g:form url="[resource:editorialInstance, action:'delete']" method="DELETE" class="ui form" id="forms">
+                                <g:actionSubmit class="ui button red" action="delete" value="${message(code: 'default.biblioteca.eliminar', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                            </g:form>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
         </div>
     </body>
 </html>
