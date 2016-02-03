@@ -26,7 +26,7 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <div id="div-tabla" class="ui segment container">
-                <div id="div-tit-tabla" class="ui medium header">Todas las categorias</div>
+                <div class="ui medium header">Todas las categorias</div>
                 <table class="ui celled table">
                     <thead>
                         <tr>

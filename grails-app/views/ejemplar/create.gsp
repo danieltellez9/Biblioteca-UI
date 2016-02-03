@@ -6,15 +6,12 @@
         <title><g:message code="default.ejemplar.nuevo" /></title>
     </head>
     <body>
-        <a href="#create-ejemplar" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.biblioteca.inicio"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.ejemplar.lista" /></g:link></li>
-            </ul>
-            </div>
-            <div id="create-ejemplar" class="content scaffold-create" role="main">
-                <h1><g:message code="default.ejemplar.nuevo" /></h1>
+        <div class="ui menu">
+            <a href="${createLink(uri: '/')}" class="header item"><asset:image class="ui mini circular image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
+            <a href="${createLink(uri: '/ejemplar/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de Ejemplares"/><g:message code="default.ejemplar.lista"/></a>
+        </div>
+        <div id="div-content" class="ui segment container">
+            <label id="tit-form" class="ui medium header"><g:message code="default.ejemplar.nuevo"/></label>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -25,14 +22,13 @@
                         </g:eachError>
                 </ul>
             </g:hasErrors>
-            <g:form url="[resource:ejemplarInstance, action:'save']" >
-                <fieldset class="form">
+            <div class="ui segment container">
+                <g:form url="[resource:ejemplarInstance, action:'save']" class="ui form" id="forms">
                     <g:render template="form"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.biblioteca.guardar', default: 'Create')}" />
-                </fieldset>
-            </g:form>
+                    <br>
+                    <g:submitButton name="create" class="ui button green" value="${message(code: 'default.biblioteca.guardar', default: 'Create')}" />
+                </g:form>
+            </div>
         </div>
     </body>
 </html>

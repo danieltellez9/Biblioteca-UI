@@ -47,7 +47,7 @@
                                 <td>${fieldValue(bean: libroInstance, field: "categoria")}</td>
                                 <td>${fieldValue(bean: libroInstance, field: "editorial")}</td>
                                 <td><g:link action="show" id="${libroInstance.id}"><g:message code="default.biblioteca.detalle"/></g:link></td>
-                            </tr>
+                                </tr>
                         </g:each>
                     </tbody>
                 </table>
