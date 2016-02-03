@@ -7,16 +7,15 @@
         <title><g:message code="default.libro.actualizar"/></title>
     </head>
     <body>
-        <a href="#edit-libro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.biblioteca.inicio"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.libro.lista" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.libro.nuevo" /></g:link></li>
-                </ul>
-            </div>
-            <div id="edit-libro" class="content scaffold-edit" role="main">
-                <h1><g:message code="default.libro.actualizar" /></h1>
+
+        <div class="ui menu">
+            <a href="${createLink(uri: '/')}" class="header item"><asset:image class="ui mini circular image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
+            <a href="${createLink(uri: '/libro/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de Libros"/><g:message code="default.libro.lista"/></a>
+            <a href="${createLink(uri: '/libro/create')}" class="item"><asset:image class="ui mini image" src="add_icon.png" alt="Nuevo Libro"/><g:message code="default.libro.nuevo"/></a>
+        </div>
+
+        <div id="div-content" class="ui segment container">
+            <label id="tit-form" class="ui medium header"><g:message code="default.libro.actualizar"/></label>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -27,15 +26,15 @@
                         </g:eachError>
                 </ul>
             </g:hasErrors>
-            <g:form url="[resource:libroInstance, action:'update']" method="PUT" >
-                <g:hiddenField name="version" value="${libroInstance?.version}" />
-                <fieldset class="form">
+
+            <div class="ui segment container">
+                <g:form url="[resource:libroInstance, action:'update']" method="PUT" class="ui form" id="forms">
+                    <g:hiddenField name="version" value="${libroInstance?.version}" />
                     <g:render template="form"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:actionSubmit class="save" action="update" value="${message(code: 'default.biblioteca.actualizar', default: 'Update')}" />
-                </fieldset>
-            </g:form>
+                    <br>
+                    <g:actionSubmit class="ui button green" action="update" value="${message(code: 'default.biblioteca.actualizar', default: 'Update')}" />
+                </g:form>
+            </div>
         </div>
     </body>
 </html>
