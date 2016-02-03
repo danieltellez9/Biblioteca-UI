@@ -29,9 +29,9 @@
                 <g:link class="item" controller="libro" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link>
             </g:each>
             <g:link controller="libro" action="create" params="['autor.id': autorInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'libro.label',default: 'Libro')])}</g:link>
+            </div>
         </div>
     </div>
-</div>
 
 
 

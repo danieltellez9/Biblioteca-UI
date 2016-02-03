@@ -37,7 +37,7 @@
             </g:if>
 
             <div id="div-tabla" class="ui segment container">
-                <div id="div-tit-tabla" class="ui medium header"></div>
+                <div id="div-tit-tabla" class="ui medium header">Colsulta de autores</div>
                 <table class="ui celled table">
                     <thead>
                         <tr>

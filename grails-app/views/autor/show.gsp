@@ -8,7 +8,6 @@
         <title><g:message code="default.autor.mostrar" args="[entityName]" /></title>
     </head>
     <body>
-
         <div class="ui menu">
             <a href="${createLink(uri: '/')}" class="item header"><asset:image class="ui circular mini image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
             <a href="${createLink(uri: '/autor/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de autores"/><g:message code="default.autor.lista"/></a>
