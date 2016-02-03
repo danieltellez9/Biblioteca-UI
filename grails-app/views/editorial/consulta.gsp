@@ -8,55 +8,46 @@
         <title><g:message code="default.editorial.consultar" /></title>
     </head>
     <body>
-        <a href="#list-editorial" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.biblioteca.inicio"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.editorial.nuevo" /></g:link></li>
-                <li><g:link class="list" action="index"><g:message code="default.editorial.lista"/></g:link></li>
-                </ul>
-            </div>
-            <div id="list-editorial" class="content scaffold-list" role="main">
-                <h1><g:message code="default.editorial.lista" /></h1>
-            </br>
-            <div class="fieldContain">
-                <g:form action="consulta" id="busqueda">
-                    <label for="busqueda">
-                        <h1><g:message code="principal.busqueda" default="Editorial:"/></h1>
-                    </label>
-                    <g:textField name="busqueda" placeholder="Buscar" default="busqueda"/>
-                    <g:submitButton name="Buscar" class="save" value="${message(code: 'principal.busqueda', default: 'Buscar')}"/>
+        <div class="ui menu">
+            <a href="${createLink(uri: '/')}" class="header item"><asset:image class="ui mini circular image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
+            <a href="${createLink(uri: '/editorial/create')}" class="item"><asset:image class="ui mini image" src="add_icon.png" alt="Nueva Editorial"/><g:message code="default.editorial.nuevo"/></a>
+            <a href="${createLink(uri: '/editorial/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de Editoriales"/><g:message code="default.editorial.lista"/></a>
+        </div>
+        <div id="div-content" class="ui segment container">
+            <div id="form-busqueda-div" class="ui segment container">
+                <g:form id="busqueda" class="ui form" action="consulta">
+                    <div class="field">
+                        <label>Busqueda de editoriales:</label>
+                        <g:textField name="busqueda" placeholder="Buscar..."/>
+                    </div>
+                    <g:submitButton name="buscar" class="ui button blue" value="${message(code: 'principal.busqueda', default: 'Buscar')}"/>
                 </g:form>
             </div>
-            </br>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <table>
-                <thead>
-                    <tr>
-
-                        <g:sortableColumn property="editorial" title="${message(code: 'editorial.editorial.label', default: 'Editorial')}" />
-                        
-                        <th></th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <g:each in="${editorialInstanceList}" status="i" var="editorialInstance">
-                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                            <td>${fieldValue(bean: editorialInstance, field: "editorial")}</td>
-                            
-                            <td><g:link action="show" id="${editorialInstance.id}"><g:message code="default.biblioteca.detalle"/></g:link></td>
-
+            <div id="div-tabla" class="ui segment container">
+                <div class="ui medium header">Consulta de editoriales</div>
+                <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <g:sortableColumn id="th" property="editorial" title="${message(code: 'editorial.editorial.label', default: 'Editorial')}" />
+                            <th id="th"></th>
                         </tr>
-                    </g:each>
-                </tbody>
-            </table>
-            <div class="pagination">
-                <g:paginate total="${editorialInstanceCount ?: 0}" />
+                    </thead>
+                    <tbody>
+                        <g:each in="${editorialInstanceList}" status="i" var="editorialInstance">
+                            <tr id="${(i % 2) == 1 ? 'td1' : 'o'}">
+                                <td>${fieldValue(bean: editorialInstance, field: "editorial")}</td>
+                                <td><g:link action="show" id="${editorialInstance.id}"><g:message code="default.biblioteca.detalle"/></g:link></td>
+                            </tr>
+                        </g:each>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <g:paginate total="${editorialInstanceCount ?: 0}" />
+                </div>
             </div>
         </div>
-    </body>
+</body>
 </html>

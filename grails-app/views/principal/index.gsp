@@ -29,14 +29,14 @@
                     <label>Busqueda de libros: </label>
                     <g:textField name="busqueda" placeholder="Buscar..."/>
                 </div>
-                <g:submitButton name="buscar" class="ui button" value="${message(code: 'pincipal.busqueda', default: 'Buscar')}"></g:submitButton>
+                <g:submitButton name="buscar" class="ui button blue" value="${message(code: 'pincipal.busqueda', default: 'Buscar')}"></g:submitButton>
             </g:form>
         </div>
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
         <div id="div-tabla" class="ui segment container">
-            <div id="div-tit-tabla" class="ui medium header">Todos los libros</div>
+            <div class="ui medium header">Todos los libros</div>
             <table class="ui celled table">
                 <thead>
                     <tr>

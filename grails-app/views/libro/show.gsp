@@ -8,73 +8,70 @@
         <title><g:message code="default.libro.mostrar" /></title>
     </head>
     <body>
-        <a href="#show-libro" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.biblioteca.inicio"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.libro.lista"/></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.libro.nuevo" /></g:link></li>
-                </ul>
-            </div>
-            <div id="show-libro" class="content scaffold-show" role="main">
-                <h1><g:message code="default.libro.mostrar" /></h1>
+
+        <div class="ui menu">
+            <a href="${createLink(uri: '/')}" class="header item"><asset:image class="ui mini circular image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
+            <a href="${createLink(uri: '/libro/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de Libros"/><g:message code="default.libro.lista"/></a>
+            <a href="${createLink(uri: '/libro/create')}" class="item"><asset:image class="ui mini image" src="add_icon.png" alt="Nuevo Libro"/><g:message code="default.libro.nuevo"/></a>
+        </div>
+
+        <div id="div-content" class="ui segment container">
+            <label id="tit-form" class="ui medium header"><g:message code="default.libro.mostrar"/></label>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <ol class="property-list libro">
+            <fieldset>
+                <div class="ui form" id="forms">
+                    <g:if test="${libroInstance?.titulo}">
+                        <div class="field">
+                            <label><g:message code="libro.titulo.label" default="Titulo"/></label>
+                            <g:textField name="titulo" id="titulo-label" readonly="" value="${fieldValue(bean: libroInstance, field: 'titulo')}"/>
+                        </div>
+                    </g:if>
 
-                <g:if test="${libroInstance?.titulo}">
-                    <li class="fieldcontain">
-                        <span id="titulo-label" class="property-label"><g:message code="libro.titulo.label" default="Titulo" /></span>
+                    <g:if test="${libroInstance?.numPag}">
+                        <div class="field">
+                            <label><g:message code="libro.numPag.label" default="Numero de Paginas"/></label>
+                            <g:textField name="numPag" id="numPag-label" readonly="" value="${fieldValue(bean: libroInstance, field: 'numPag')}"/>
+                        </div>
+                    </g:if>
 
-                        <span class="property-value" aria-labelledby="titulo-label"><g:fieldValue bean="${libroInstance}" field="titulo"/></span>
+                    <g:if test="${libroIsntance?.autor}">
+                        <div class="field">
+                            <label><g:message code="libro.autor.label" default="Autor"/></label>
+                            <g:textField name="autor" readonly="" id="autor-label" value="${fieldValue(bean: libroInstance, field: 'autor')}"/>
+                        </div>
+                    </g:if>
 
-                    </li>
-                </g:if>
+                    <g:if test="${libroInstance?.categoria}">
+                        <div class="field">
+                            <label><g:message code="libro.categoria.label" default="Categoria"/></label>
+                            <g:textField name="categoria" id="categoria-label" readonly="" value="${fieldValue(bean: libroInstance, field: 'categoria')}"/>
+                        </div>
+                    </g:if>
 
-                <g:if test="${libroInstance?.numPag}">
-                    <li class="fieldcontain">
-                        <span id="numPag-label" class="property-label"><g:message code="libro.numPag.label" default="Numero de Paginas" /></span>
+                    <g:if test="${libroInstance?.editorial}">
+                        <div class="field">
+                            <label><g:message code="libro.editorial.label" default="Editorial"/></label>
+                            <g:textField name="editorial" id="editorial-label" readonly="" value="${fieldValue(bean: libroInstance, field: 'editorial')}"/>
+                        </div>
+                    </g:if>
 
-                        <span class="property-value" aria-labelledby="numPag-label"><g:fieldValue bean="${libroInstance}" field="numPag"/></span>
+                    <div class="two fields">
+                        <div class="field">
+                            <g:form id="${fieldValue(bean: libroInstance, field: 'id')}" action="edit">
+                                <g:submitButton name="editarBtn" class="ui button green" value="${message(code: 'default.biblioteca.actualizar', default: 'Edit')}"/>
+                            </g:form>
+                        </div>
+                        <div class="field">
+                            <g:form url="[resource:libroInstance, action:'delete']" method="DELETE" class="ui form" id="forms">
+                                <g:actionSubmit class="ui button red" action="delete" value="${message(code: 'default.biblioteca.eliminar', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                            </g:form>
+                        </div>
+                    </div>
 
-                    </li>
-                </g:if>
-
-                <g:if test="${libroInstance?.autor}">
-                    <li class="fieldcontain">
-                        <span id="autor-label" class="property-label"><g:message code="libro.autor.label" default="Autor" /></span>
-
-                        <span class="property-value" aria-labelledby="autor-label"><g:link controller="autor" action="show" id="${libroInstance?.autor?.id}">${libroInstance?.autor?.encodeAsHTML()}</g:link></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${libroInstance?.categoria}">
-                    <li class="fieldcontain">
-                        <span id="categoria-label" class="property-label"><g:message code="libro.categoria.label" default="Categoria" /></span>
-
-                        <span class="property-value" aria-labelledby="categoria-label"><g:link controller="categoria" action="show" id="${libroInstance?.categoria?.id}">${libroInstance?.categoria?.encodeAsHTML()}</g:link></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${libroInstance?.editorial}">
-                    <li class="fieldcontain">
-                        <span id="editorial-label" class="property-label"><g:message code="libro.editorial.label" default="Editorial" /></span>
-
-                        <span class="property-value" aria-labelledby="editorial-label"><g:link controller="editorial" action="show" id="${libroInstance?.editorial?.id}">${libroInstance?.editorial?.encodeAsHTML()}</g:link></span>
-
-                    </li>
-                </g:if>
-
-            </ol>
-            <g:form url="[resource:libroInstance, action:'delete']" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${libroInstance}"><g:message code="default.biblioteca.actualizar" default="Edit" /></g:link>
-                    <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.biblioteca.eliminar', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
-            </g:form>
+                </div>
+            </fieldset>
         </div>
     </body>
 </html>

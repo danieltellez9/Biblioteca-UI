@@ -29,7 +29,7 @@
                         <label>Busqueda de autores:</label>
                         <g:textField name="busqueda" placeholder="Buscar..."/>
                     </div>
-                    <g:submitButton name="buscar" class="ui button" value="${message(code: 'principal.busqueda', default: 'Buscar')}"></g:submitButton>
+                    <g:submitButton name="buscar" class="ui button blue" value="${message(code: 'principal.busqueda', default: 'Buscar')}"></g:submitButton>
                 </g:form>
             </div>
             <g:if test="${flash.message}">
@@ -37,7 +37,7 @@
             </g:if>
 
             <div id="div-tabla" class="ui segment container">
-                <div id="div-tit-tabla" class="ui medium header"></div>
+                <div class="ui medium header">Colsulta de autores</div>
                 <table class="ui celled table">
                     <thead>
                         <tr>

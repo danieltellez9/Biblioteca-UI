@@ -7,16 +7,13 @@
         <title><g:message code="default.categoria.actualizar"/></title>
     </head>
     <body>
-        <a href="#edit-categoria" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.biblioteca.inicio"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.categoria.lista"/></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.categoria.nuevo" /></g:link></li>
-            </ul>
-            </div>
-            <div id="edit-categoria" class="content scaffold-edit" role="main">
-                <h1><g:message code="default.categoria.actualizar" /></h1>
+        <div class="ui menu">
+            <a href="${createLink(uri: '/')}" class="item header"><asset:image src="logo_biblioteca.png" class="ui circular mini image" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
+            <a href="${createLink(uri: '/categoria/index')}" class="item"><asset:image src="list_icon.png" class="ui mini image" alt="Lista de Categorias"/><g:message code="default.categoria.lista"/></a>
+            <a href="${createLink(uri: '/categoria/create')}" class="item"><asset:image src="add_icon.png" class="ui mini image" alt="Nueva Categoria"/><g:message code="default.categoria.nuevo"/></a>
+        </div>
+        <div id="div-content" class="ui segment container">
+            <label id="tit-form" class="ui medium header"><g:message code="default.categoria.actualizar"/></label>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -27,15 +24,14 @@
                         </g:eachError>
                 </ul>
             </g:hasErrors>
-            <g:form url="[resource:categoriaInstance, action:'update']" method="PUT" >
-                <g:hiddenField name="version" value="${categoriaInstance?.version}" />
-                <fieldset class="form">
+            <div class="ui segment container">
+                <g:form url="[resource:categoriaInstance, action:'update']" method="PUT" class="ui form" id="forms">
+                    <g:hiddenField name="version" value="${categoriaInstance?.version}" />
                     <g:render template="form"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <g:actionSubmit class="save" action="update" value="${message(code: 'default.biblioteca.actualizar', default: 'Update')}" />
-                </fieldset>
-            </g:form>
+                    <br>
+                    <g:actionSubmit class="ui button green" action="update" value="${message(code: 'default.biblioteca.actualizar', default: 'Update')}" />
+                </g:form>
+            </div>
         </div>
     </body>
 </html>

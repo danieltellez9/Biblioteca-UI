@@ -10,9 +10,7 @@
             <a href="${createLink(uri: '/')}" class="item header"><asset:image class="ui circular mini image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
             <a href="${createLink(uri: '/autor/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de autores"/><g:message code="default.autor.lista"/></a>
         </div>
-
         <div id="div-content" class="ui segment container">
-
             <label id="tit-form" class="ui medium header"><g:message code="default.autor.nuevo"/></label>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
@@ -26,15 +24,11 @@
             </g:hasErrors>
             <div class="ui segment container">
                 <g:form url="[resource:autorInstance, action:'save']" class="ui form" id="forms">
-                    <!--<fieldset>-->
                         <g:render template="form"/>
-                    <!--</fieldset>-->
-                    <!--<fieldset class="buttons">-->
-                        <g:submitButton name="create" class="ui button" value="${message(code: 'default.biblioteca.guardar', default: 'Create')}" />
-                    <!--</fieldset>-->
+                        <br>
+                        <g:submitButton name="create" class="ui button green" value="${message(code: 'default.biblioteca.guardar', default: 'Create')}" />
                 </g:form>
             </div>
-
         </div>
     </body>
 </html>
