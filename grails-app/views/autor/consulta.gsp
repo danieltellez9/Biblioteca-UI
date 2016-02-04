@@ -17,11 +17,10 @@
     </head>
     <body>
         <div class="ui menu">
-            <a href="${createLink(uri: '/')}" class="item header"><asset:image class="ui mini cirucular image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
+            <a href="${createLink(uri: '/')}" class="item header"><asset:image class="ui mini circular image" src="logo_biblioteca.png" alt="Inicio"/><g:message code="default.biblioteca.inicio"/></a>
             <a href="${createLink(uri: '/autor/create')}" class="item"><asset:image class="ui mini image" src="add_icon.png" alt="Nuevo Autor"/><g:message code="default.autor.nuevo"/></a>
             <a href="${createLink(uri: '/autor/index')}" class="item"><asset:image class="ui mini image" src="list_icon.png" alt="Lista de Autores"/><g:message code="default.autor.lista"/></a>
         </div>
-
         <div id="div-content" class="ui segment conten">
             <div id="form-busqueda-div" class="ui segment container">
                 <g:form id="busqueda" class="ui form" action="consulta">
@@ -35,41 +34,28 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-
             <div id="div-tabla" class="ui segment container">
                 <div class="ui medium header">Colsulta de autores</div>
                 <table class="ui celled table">
                     <thead>
                         <tr>
-
                             <g:sortableColumn id="th" property="titulo" title="${message(code: 'autor.nombre.label', default: 'Nombre')}" />
-
                             <g:sortableColumn id="th" property="categoria" title="${message(code: 'autor.aPaterno.label', default: 'Apellido Paterno')}" />
-
                             <g:sortableColumn id="th" property="editorial" title="${message(code: 'autor.aMaterno.label', default: 'Apellido Materno')}" />
-
                             <g:sortableColumn id="th" property="numPag" title="${message(code: 'autor.edad.label', default: 'Edad')}" />
-
                             <th id="th"></th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <g:each in="${autorInstanceList}" status="i" var="autorInstance">
                             <tr id="${(i % 2) == 1 ? 'td1' : 'o'}">
-
                                 <td>${fieldValue(bean: autorInstance, field: "nombre")}</td>
-
                                 <td>${fieldValue(bean: autorInstance, field: "aPaterno")}</td>
-
                                 <td>${fieldValue(bean: autorInstance, field: "aMaterno")}</td>
-
                                 <td>${fieldValue(bean: autorInstance, field: "edad")}</td>
-
                                 <td><g:link action="show" id="${autorInstance.id}"><g:message code="default.biblioteca.detalle"/></g:link></td>
-
-                            </tr>
-                        </g:each>
+                                </tr>
+                        </g:each>   
                     </tbody>
                 </table>
                 <div class="pagination">
