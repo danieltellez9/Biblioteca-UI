@@ -7,11 +7,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title><g:layoutTitle default="Grails"/></title>
+        <title><g:message code="default.principal.titulo"/></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--
         <link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
         <link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
-        <link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
+        <link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">-->
+        <link rel="shortcut icon" href="${assetPath(src: 'logo_biblioteca.png')}" type="image/x-icon">        
     <asset:stylesheet src="indexStyle.css"/>
     <asset:stylesheet src="/semantic-UI/semantic.css"/>
     <asset:stylesheet src="aplication.css"/>
@@ -23,7 +25,7 @@
     <div id="div-head-foot" class="ui raised segment">
         <div class="content">
             <div class="ui centered huge header">
-                <a href="${createLink(uri: '')}"><asset:image class="ui tiny centered circular image" src="logo_biblioteca.png" alt="Biblioteca"/></a>Biblioteca UI</div>
+                <a href="${createLink(uri: '/')}"><asset:image class="ui tiny centered circular image" src="logo_biblioteca.png" alt="Biblioteca"/></a>Biblioteca UI</div>
         </div>
     </div>
     <g:layoutBody/>
@@ -82,7 +84,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>

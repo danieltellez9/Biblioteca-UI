@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="Biblioteca.CRUD.Libro" %>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,9 +7,9 @@
         <meta name="layout" content="main">
         <title><g:message code="default.principal.titulo"/></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
+        <!--<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
         <link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
-        <link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
+        <link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">-->
     <asset:stylesheet src="indexStyle.css"/>
     <asset:stylesheet src="/semantic-UI/semantic.css"/>
     <asset:stylesheet src="aplication.css"/>
@@ -19,7 +18,7 @@
 </head>
 <body>
     <div class="ui fluid six item menu" id="div-menu">
-        <a href="${createLink(uri: '/')}" class="item"><asset:image class="ui mini circular image" src="logo_biblioteca.png"/>Inicio</a>
+        <a href="${createLink(uri: '/')}" class=" header item"><asset:image class="ui mini circular image" src="logo_biblioteca.png"/>Inicio</a>
         <a href="${createLink(uri: '/autor')}" class="item"><asset:image class="ui mini image" src="logo_autor.png"/>Autores</a>
         <a href="${createLink(uri: '/categoria')}" class="item"><asset:image class="ui mini image" src="logo_categoria.png"/>Categorias</a>
         <a href="${createLink(uri: '/editorial')}" class="item"><asset:image class="ui mini image" src="logo_editorial.png"/>Editoriales</a>
@@ -53,7 +52,7 @@
                 </thead>
                 <tbody>
                     <g:each in="${libroInstanceList}" status="i" var="libroInstance">
-                        <tr id="${(i % 2) == 0 ? 'td1' : 'o'}">
+                        <tr id="${(i % 2) == 1 ? 'td1' : 'o'}">
                             <td>${fieldValue(bean: libroInstance, field: "titulo")}</td>
                             <td>${fieldValue(bean: libroInstance, field: "categoria")}</td>
                             <td>${fieldValue(bean: libroInstance, field: "editorial")}</td>
