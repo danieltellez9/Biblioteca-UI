@@ -31,7 +31,7 @@
     <g:layoutBody/>
     <div id="div-head-foot" class="ui raised segment">
 
-        <div class="ui horizontal list">
+        <div class="ui tiny horizontal list">
             <a class="item" href="${createLink(uri: '/autor/index')}">
                 <asset:image class="ui mini image" src="logo_autor.png" alt="Autores"/>
                 <div class="content">
